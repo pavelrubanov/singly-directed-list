@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace My_list
-    //палиндром меньше чем за 1,5n
-    // k-ый с конца за n
+
 {
     internal class List
     {
@@ -15,6 +15,10 @@ namespace My_list
         {
             List_Item l = new List_Item(value);
             head = l;
+        }
+        public List(List_Item i)
+        {
+            head = i;
         }
         private List_Item last()
         {
@@ -115,6 +119,36 @@ namespace My_list
             }
             head=i;
             head.next = previous;
+        }
+        public List get_copy() //builder
+        {
+            List_Item? j = new List_Item(head.value);
+            List copy = new List(j);
+            List_Item? i = head.next;
+            while (i!=null)
+            {
+                List_Item t = new List_Item (i.value);
+                j.next = t;
+                j = j.next;
+                i = i.next;
+            }
+
+            return copy;
+        }
+        public bool is_palindrom()
+        {
+            bool palindrom = true;
+            List t = this.get_copy();
+            t.revers();
+            List_Item? i = this.head;
+            List_Item? j = t.head;
+            while (i.next!= null)
+            {
+                if (i.value != j.value) palindrom = false;
+                i = i.next;
+                j = j.next;
+            }
+            return palindrom;
         }
         
     }

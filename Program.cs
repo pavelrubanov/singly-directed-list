@@ -11,11 +11,9 @@ class Program
             l.add_item(Convert.ToInt32(Console.ReadLine()));
         }
 
-        //Console.WriteLine("\n"+ l.k_from_end(4).value);
-        l.revers();
-        l.write_all();
 
-        Console.ReadKey();
+        Console.WriteLine(l.is_palindrom());
+        //Console.ReadKey();
         return 0;
     }
 }
