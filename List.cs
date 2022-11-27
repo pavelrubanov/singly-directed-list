@@ -59,34 +59,6 @@ namespace My_list
             if (head.next!=null)
             head = head.next;
         }
-        /*public List_Item k_from_end(int k)
-        {
-            List_Item[] arr = new List_Item[0];
-            List_Item? i = head;
-            do
-            {
-                Array.Resize<List_Item>(ref arr, arr.Length + 1);
-                arr[arr.Length - 1] = i;
-                i = i.next;
-            } while (i != null);
-            return arr[arr.Length - k];
-        }
-        public List_Item k_from_end (int k)
-        {
-            int size = 1;
-            List_Item i = head;
-            while (i.next!=null)
-            {
-                i = i.next;
-                size++;
-            }
-            i = head;
-            for (int j=0;j<=size-k-1;j++)
-            {
-                i = i.next;
-            }
-            return i;
-        }*/
         public List_Item k_from_end(int k)
         {
             List_Item required = head;
@@ -150,6 +122,26 @@ namespace My_list
             }
             return palindrom;
         }
-        
+        public void delete_duplicates()
+        {
+            List<int> values = new List<int>();
+            values.Add(head.value);
+            List_Item? i = head.next;
+            List_Item? previous = head;
+            while (i!=null)
+            {
+                if (values.Contains(i.value))
+                {
+                    previous.next = i.next;
+                }
+                else
+                {
+                    values.Add(i.value);
+                    previous = previous.next;
+                }
+                i = i.next;
+
+            }
+        }
     }
 }

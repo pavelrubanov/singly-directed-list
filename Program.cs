@@ -11,9 +11,8 @@ class Program
             l.add_item(Convert.ToInt32(Console.ReadLine()));
         }
 
-
-        Console.WriteLine(l.is_palindrom());
-        //Console.ReadKey();
+        l.delete_duplicates();
+        l.write_all();
         return 0;
     }
 }
